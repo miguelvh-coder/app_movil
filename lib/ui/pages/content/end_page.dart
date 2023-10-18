@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'package:app_oper/ui/pages/content/user_list.dart';
 import 'package:app_oper/ui/controllers/progresion.dart';
 import 'package:app_oper/ui/controllers/dificultad.dart';
 import '../../controllers/answer.dart';
@@ -38,7 +39,7 @@ String minutos(int segu) {
 
 void newDiff(int cans, int se) {
   dificultad difficulty = Get.find();
-    if (cans >= 4  && se < 300) {
+    if (cans >= 4  && se < 120) {
       if(difficulty.difficultya.value == 1){
         difficulty.diffa_plus();
       }else if(difficulty.difficultyb == 1){
@@ -115,7 +116,33 @@ class _ep extends State<ep> {
               ],
             )
           ),
+          
+          Container(
+            color: tempo.getTime() <=120 && controller.puntuacion >=4 ? Colors.green:Colors.red,
+            
+            child: Obx(() {
+                    final tt =tempo.getTime();
+                    final point = controller.puntuacion;
+                    if(tt <= 120 && point >= 4){
+                      return Text(
+                        'Su dificultad aumentó', // Muestra el int convertido o un mensaje de error
+                        style: const TextStyle(fontSize: 18.0), // Ajusta el tamaño de la fuente del texto
+                      );
+                    }else{
+                      return Text(
+                        'Su dificultad permanece igual', // Muestra el int convertido o un mensaje de error
+                        style: const TextStyle(fontSize: 18.0), // Ajusta el tamaño de la fuente del texto
+                      );
+                    }
 
+                  }),
+            
+          ),
+          ElevatedButton(onPressed: () {Get.to(const UserListPage());},
+           child: const Text('volver', // Muestra el int convertido o un mensaje de error
+                      style: const TextStyle(fontSize: 18.0), // Ajusta el tamaño de la fuente del texto
+                    ),
+          )
         ],
       ),
       )
