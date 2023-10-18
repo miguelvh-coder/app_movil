@@ -75,6 +75,7 @@ class _ep extends State<ep> {
               )
             )
           ),
+          SizedBox(height:20),
           Container(
             color: const Color.fromARGB(255, 235, 235, 235),
             child:(
@@ -83,7 +84,7 @@ class _ep extends State<ep> {
                 style: TextStyle(fontSize: 22.0), // Ajusta el tamaño de la fuente del texto
               )
             )
-          ),
+          ),SizedBox(height:20),
           Container(
             color: Color.fromARGB(255, 172, 172, 172),
             child: Column(
@@ -99,7 +100,7 @@ class _ep extends State<ep> {
                       style: const TextStyle(fontSize: 18.0), // Ajusta el tamaño de la fuente del texto
                     );
                   }),
-                ),
+                ),SizedBox(height:20),
 
                 Padding(
                   padding:const EdgeInsets.all(20.0), // Ajusta el espacio alrededor del textonull, // Cambia null por la función que debe ejecutarse cuando se presione el botón
@@ -115,7 +116,7 @@ class _ep extends State<ep> {
 
               ],
             )
-          ),
+          ),SizedBox(height:20),
           
           Container(
             color: tempo.getTime() <=120 && controller.puntuacion >=4 ? Colors.green:Colors.red,
@@ -137,8 +138,11 @@ class _ep extends State<ep> {
 
                   }),
             
-          ),
-          ElevatedButton(onPressed: () {Get.to(const UserListPage());},
+          ),SizedBox(height:20),
+          ElevatedButton(onPressed: () {
+            tempo.reset();
+            Get.to(const UserListPage());
+            },
            child: const Text('volver', // Muestra el int convertido o un mensaje de error
                       style: const TextStyle(fontSize: 18.0), // Ajusta el tamaño de la fuente del texto
                     ),
