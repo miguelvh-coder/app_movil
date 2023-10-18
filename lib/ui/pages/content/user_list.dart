@@ -44,7 +44,7 @@ class _UserListPageState extends State<UserListPage> {
               userController.simulateProcess();
             }),
             IconButton(
-            icon: const Icon(Icons.indeterminate_check_box_rounded),
+            icon: const Icon(Icons.question_mark),
             onPressed: () {
               Get.to(() => const CalculatorApp());
             }),
@@ -57,7 +57,13 @@ class _UserListPageState extends State<UserListPage> {
         },
         child: const Icon(Icons.add),
       ),
-      
+      /*FloatingActionButton(
+        onPressed: () async {
+          logInfo("Hacer cuestionario");
+          Get.to(() => const CalculatorApp());
+        },
+        child: const Icon(Icons.add),
+      ),*/
     );
   }
 
@@ -87,8 +93,7 @@ class _UserListPageState extends State<UserListPage> {
                 title: Text(user.name),
                 subtitle: Text(user.email),
                 onTap: () {
-                  Get.to(() => const CalculatorApp(),
-                      arguments: [user, user.id]);
+                  Get.to(() => const CalculatorApp());
                 },
               ),
             ),
