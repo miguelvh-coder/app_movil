@@ -12,7 +12,6 @@ import '../../controllers/answer.dart';
 import '../../controllers/dificultad.dart';
 import '../../controllers/progresion.dart';
 import '../../controllers/result_writer.dart';
-import 'new_user.dart';
 
 class UserListPage extends StatefulWidget {
   const UserListPage({super.key});
@@ -65,27 +64,27 @@ class _UserListPageState extends State<UserListPage> {
               userController.simulateProcess();
             }),
             IconButton(
-            icon: const Icon(Icons.question_mark),
+            icon: const Icon(Icons.replay_outlined),
             onPressed: () {
               recargar();
-              Get.to(() => const CalculatorApp());
             }),
       ]),
-      body: Center(child: _getXlistView()),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          logInfo("Add user from UI");
-          Get.to(() => const NewUserPage());
-        },
-        child: const Icon(Icons.add),
-      ),
-      /*FloatingActionButton(
-        onPressed: () async {
-          logInfo("Hacer cuestionario");
-          Get.to(() => const CalculatorApp());
-        },
-        child: const Icon(Icons.add),
-      ),*/
+      body: Center(child: cuestionario()),
+      floatingActionButton: Container(
+        height: 50.0,
+        width: 150.0,
+        child: FloatingActionButton(
+          onPressed: () async {
+            recargar();
+            logInfo("Empezando cuestionario");
+            Get.to(() => const CalculatorApp());
+          },
+          child: const Padding(
+            padding: EdgeInsets.all(15.0),
+            child: Text("Hacer prueba",style: TextStyle(color: Color.fromARGB(255, 0, 0, 0))),
+            )
+        ),
+      )
     );
   }
 
@@ -114,9 +113,7 @@ class _UserListPageState extends State<UserListPage> {
               child: ListTile(
                 title: Text(user.name),
                 subtitle: Text(user.email),
-                onTap: () {
-                  Get.to(() => const CalculatorApp());
-                },
+                
               ),
             ),
           );
@@ -125,40 +122,5 @@ class _UserListPageState extends State<UserListPage> {
     );
   }
 
-  Widget _getXlistView() {
-    return Obx(
-      () => ListView.builder(
-        itemCount: userController.users.length,
-        itemBuilder: (context, index) {
-          User user = userController.users[index];
-          return Dismissible(
-            key: UniqueKey(),
-            background: Container(
-                color: Colors.red,
-                alignment: Alignment.centerLeft,
-                child: const Padding(
-                  padding: EdgeInsets.only(left: 20),
-                  child: Text(
-                    "Deleting",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                )),
-            onDismissed: (direction) {
-              userController.deleteUser(user.id!);
-            },
-            child: Card(
-              child: ListTile(
-                title: Text(user.name),
-                subtitle: Text(user.email),
-                onTap: () {
-                  Get.to(() => const EditUserPage(),
-                      arguments: [user, user.id]);
-                },
-              ),
-            ),
-          );
-        },
-      ),
-    );
-  }
+
 }

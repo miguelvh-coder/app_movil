@@ -78,11 +78,12 @@ class botones extends StatelessWidget {
             //_logout();
           }
           await controller2.verificar(controller.result);
-          
-          controller.aumento();
-          controller2.generar_q(dia,dib);
-          controller.reset();
-          print("hola");
+          //nueva pregunta
+          if(controller.contador<6){
+            controller.aumento();
+            controller2.generar_q(dia,dib);
+            controller.reset();
+          }
         } else {
           int numero = n_val(nombre);
           controller.newdigit(numero);
@@ -96,11 +97,8 @@ class botones extends StatelessWidget {
       width: 60.0,
       height: 60.0,
 
-      
-
       child: ElevatedButton(
         onPressed: () {
-          
           oprimido(button);
         },
 
