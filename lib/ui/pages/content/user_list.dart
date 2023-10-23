@@ -8,6 +8,10 @@ import 'package:loggy/loggy.dart';
 import '../../../domain/models/user.dart';
 import '../../controllers/authentication_controller.dart';
 import '../../controllers/user_controller.dart';
+import '../../controllers/answer.dart';
+import '../../controllers/dificultad.dart';
+import '../../controllers/progresion.dart';
+import '../../controllers/result_writer.dart';
 import 'new_user.dart';
 
 class UserListPage extends StatefulWidget {
@@ -15,6 +19,20 @@ class UserListPage extends StatefulWidget {
 
   @override
   State<UserListPage> createState() => _UserListPageState();
+}
+
+void recargar(){
+  dificultad controller = Get.find();
+  answer controller2 = Get.find();
+  result_writer controller3 = Get.find();
+  progresion tempo = Get.find();
+
+  int dia = controller.difficultya;
+  int dib = controller.difficultyb;
+  controller2.generar_q(dia,dib);
+    
+  tempo.reset();
+  tempo.empezar();
 }
 
 class _UserListPageState extends State<UserListPage> {
@@ -46,6 +64,7 @@ class _UserListPageState extends State<UserListPage> {
             IconButton(
             icon: const Icon(Icons.question_mark),
             onPressed: () {
+              recargar();
               Get.to(() => const CalculatorApp());
             }),
       ]),

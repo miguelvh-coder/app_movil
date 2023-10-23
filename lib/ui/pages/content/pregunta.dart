@@ -61,12 +61,12 @@ class _CalculatorState extends State<Calculator> {
     progresion tempo = Get.find();
 
 
-    int dia = controller.difficultya;
-    int dib = controller.difficultyb;
-    controller2.generar_q(dia,dib);
+    //int dia = controller.difficultya;
+    //int dib = controller.difficultyb;
+    //controller2.generar_q(dia,dib);
     
-    tempo.reset();
-    tempo.empezar();
+    //tempo.reset();
+    //tempo.empezar();
 
     List<List<String>> buttonGrid = [
       ["7", "8", "9"],
@@ -88,8 +88,7 @@ class _CalculatorState extends State<Calculator> {
       ));
     }
     if(controller3.actual() >=6){
-      print("hola");
-      end_page();
+      const end_page();
     }
     return Scaffold(
       
