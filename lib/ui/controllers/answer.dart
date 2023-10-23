@@ -27,6 +27,8 @@ class answer extends GetxController {
 
   correct() => _puntuacion.value++;
 
+  reiniciarp() => _puntuacion.value=0;
+
   generar_q(int da, db) {
     if (da==1){
       _a.value = Random().nextInt(10);

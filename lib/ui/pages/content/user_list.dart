@@ -33,6 +33,9 @@ void recargar(){
     
   tempo.reset();
   tempo.empezar();
+  controller2.reiniciarp();
+  controller3.reinicio();
+
 }
 
 class _UserListPageState extends State<UserListPage> {

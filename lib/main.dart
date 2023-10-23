@@ -6,7 +6,7 @@ import 'package:app_oper/ui/controllers/user_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:app_oper/ui/central.dart';
-import 'ui/pages/content/pregunta.dart';
+import 'ui/pages/content/user_list.dart';
 import 'package:app_oper/domain/use_case/user_case.dart';
 import 'domain/repositories/repository.dart';
 import 'domain/use_case/authentication_case.dart';
@@ -42,8 +42,8 @@ class MyApp extends StatelessWidget {
             backgroundColor: Theme.of(context).colorScheme.inversePrimary,
             title: const Text('app_oper Demo'),
           ),
-          body: const Central(), //ir a la pagina de inicio
-          //body: const CalculatorApp(), //ir a la pagina de inicio
+          //body: const Central(), //ir a la pagina de inicio
+          body: const UserListPage(), //ir a la pagina de inicio
         ));
   }
 }
