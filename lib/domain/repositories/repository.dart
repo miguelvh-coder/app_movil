@@ -1,11 +1,14 @@
-import 'package:app_oper/data/authentication_data.dart';
+import '../../data/data_remote/authentication_data.dart';
+import '../../data/data_remote/user_data.dart';
+import '../../data/data_remote/history_data.dart';
 
-import '../../data/user_data.dart';
 import '../models/user.dart';
+import '../models/history.dart';
 
 class Repository {
   late AuthenticationDatatasource _authenticationDataSource;
   late UserDataSource _userDatatasource;
+  late HistorySource _historyDatatasource;
   String token = "";
 
   // the base url of the API should end without the /
@@ -40,4 +43,7 @@ class Repository {
 
   Future<bool> simulateProcess() async =>
       await _userDatatasource.simulateProcess(_baseUrl, token);
+
+  Future<bool> saveHis(History his) async =>await _historyDatatasource.saveSession(his);
+  Future<List> getHis(String email) async =>await _historyDatatasource.getHis(email);
 }

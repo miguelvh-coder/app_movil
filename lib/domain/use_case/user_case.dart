@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:loggy/loggy.dart';
 
+import '../models/history.dart';
 import '../models/user.dart';
 import '../repositories/repository.dart';
 
@@ -20,6 +21,14 @@ class UserUseCase {
       await _repository.updateUser(user);
 
   deleteUser(int id) async => await _repository.deleteUser(id);
+
+  Future<void> saveHis(History his) async{
+  logInfo("Saving in repository");
+  await _repository.saveHis(his);}
+
+  Future<List> getHis(String email) async{
+  logInfo("Saving in repository");
+  return await _repository.getHis(email);}
 
   simulateProcess() async => await _repository.simulateProcess();
 }

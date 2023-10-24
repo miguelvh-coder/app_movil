@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:loggy/loggy.dart';
-import '../../../domain/models/user.dart';
+import '../../../../domain/models/user.dart';
 import 'package:http/http.dart' as http;
 
 class UserDataSource {
