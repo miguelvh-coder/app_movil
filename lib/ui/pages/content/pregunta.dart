@@ -112,7 +112,7 @@ class _CalculatorState extends State<Calculator> {
 
                   return Text(
                   'Pregunta: $aa/6', // Muestra el int convertido o un mensaje de error
-                  style: TextStyle(fontSize: 18.0), // Ajusta el tamaño de la fuente del texto
+                  style: const TextStyle(fontSize: 18.0), // Ajusta el tamaño de la fuente del texto
                   );
                 }),
             ),
@@ -125,13 +125,13 @@ class _CalculatorState extends State<Calculator> {
 
                   return Text(
                   'Tiempo = $ta', // Muestra el int convertido o un mensaje de error
-                  style: TextStyle(fontSize: 18.0), // Ajusta el tamaño de la fuente del texto
+                  style: const TextStyle(fontSize: 18.0), // Ajusta el tamaño de la fuente del texto
                   );
                 }),
             ),
             ]),
-            operacion(),
-            resultado(),
+           const operacion(),
+          const resultado(),
             Column(
               children: buttonRows,
             ),

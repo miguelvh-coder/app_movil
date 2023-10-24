@@ -34,6 +34,8 @@ void recargar(){
   tempo.empezar();
   controller2.reiniciarp();
   controller3.reinicio();
+  controller3.reset();
+
 
 }
 

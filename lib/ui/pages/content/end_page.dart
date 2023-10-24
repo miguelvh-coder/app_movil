@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'package:app_oper/domain/models/history.dart';
 import 'package:app_oper/ui/pages/content/user_list.dart';
 import 'package:app_oper/ui/controllers/progresion.dart';
 import 'package:app_oper/ui/controllers/dificultad.dart';
+import 'package:app_oper/ui/controllers/history_controller.dart';
+import 'package:app_oper/ui/controllers/person_controller.dart';
 import '../../controllers/answer.dart';
 
 
@@ -50,6 +53,8 @@ void newDiff(int cans, int se) {
 
 class _ep extends State<ep> {
 
+  HistoryController history=Get.find();
+  PersonController perController= Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +80,7 @@ class _ep extends State<ep> {
               )
             )
           ),
-          SizedBox(height:20),
+          const SizedBox(height:20),
           Container(
             color: const Color.fromARGB(255, 235, 235, 235),
             child:(
@@ -84,9 +89,9 @@ class _ep extends State<ep> {
                 style: TextStyle(fontSize: 22.0), // Ajusta el tamaño de la fuente del texto
               )
             )
-          ),SizedBox(height:20),
+          ),const SizedBox(height:20),
           Container(
-            color: Color.fromARGB(255, 172, 172, 172),
+            color:const Color.fromARGB(255, 172, 172, 172),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children:[
@@ -100,7 +105,7 @@ class _ep extends State<ep> {
                       style: const TextStyle(fontSize: 18.0), // Ajusta el tamaño de la fuente del texto
                     );
                   }),
-                ),SizedBox(height:20),
+                ),const SizedBox(height:20),
 
                 Padding(
                   padding:const EdgeInsets.all(20.0), // Ajusta el espacio alrededor del textonull, // Cambia null por la función que debe ejecutarse cuando se presione el botón
@@ -116,7 +121,7 @@ class _ep extends State<ep> {
 
               ],
             )
-          ),SizedBox(height:20),
+          ),const SizedBox(height:20),
           
           Container(
             color: tempo.getTime() <=120 && controller.puntuacion >=4 ? Colors.green:Colors.red,
@@ -125,26 +130,35 @@ class _ep extends State<ep> {
                     final tt =tempo.getTime();
                     final point = controller.puntuacion;
                     if(tt <= 120 && point >= 4){
-                      return Text(
+                      return const Text(
                         'Su dificultad aumentó', // Muestra el int convertido o un mensaje de error
-                        style: const TextStyle(fontSize: 18.0), // Ajusta el tamaño de la fuente del texto
+                        style: TextStyle(fontSize: 18.0), // Ajusta el tamaño de la fuente del texto
                       );
                     }else{
-                      return Text(
+                      return const Text(
                         'Su dificultad permanece igual', // Muestra el int convertido o un mensaje de error
-                        style: const TextStyle(fontSize: 18.0), // Ajusta el tamaño de la fuente del texto
+                        style: TextStyle(fontSize: 18.0), // Ajusta el tamaño de la fuente del texto
                       );
                     }
 
                   }),
             
-          ),SizedBox(height:20),
-          ElevatedButton(onPressed: () {
-            tempo.reset();
-            Get.to(const UserListPage());
+          ),
+          const SizedBox(height:20),
+          ElevatedButton(
+            onPressed: () async {
+              tempo.reset();
+              Get.to(const UserListPage());
+              await history.saveHis(
+                History(
+                  time: tempo.getTime(),
+                  email: perController.email.value,
+                  points: controller.puntuacion,
+                )
+                );
             },
            child: const Text('volver', // Muestra el int convertido o un mensaje de error
-                      style: const TextStyle(fontSize: 18.0), // Ajusta el tamaño de la fuente del texto
+                      style: TextStyle(fontSize: 18.0), // Ajusta el tamaño de la fuente del texto
                     ),
           )
         ],
