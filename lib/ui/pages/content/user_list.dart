@@ -12,6 +12,8 @@ import '../../controllers/answer.dart';
 import '../../controllers/dificultad.dart';
 import '../../controllers/progresion.dart';
 import '../../controllers/result_writer.dart';
+import '../../controllers/person_controller.dart';
+import '../../controllers/history_controller.dart';
 
 class UserListPage extends StatefulWidget {
   const UserListPage({super.key});
@@ -42,6 +44,8 @@ void recargar(){
 class _UserListPageState extends State<UserListPage> {
   UserController userController = Get.find();
   AuthenticationController authenticationController = Get.find();
+  HistoryController hisController = Get.find();
+  PersonController perController = Get.find();
 
   _logout() async {
     try {
@@ -114,7 +118,7 @@ class _UserListPageState extends State<UserListPage> {
             child: Card(
               child: ListTile(
                 title: Text(user.name),
-                subtitle: Text(user.email),
+                subtitle: Text(hisController.getHis(perController.email.value).toString()),
                 
               ),
             ),
