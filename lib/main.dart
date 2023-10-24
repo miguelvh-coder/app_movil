@@ -68,8 +68,8 @@ class MyApp extends StatelessWidget {
             backgroundColor: Theme.of(context).colorScheme.inversePrimary,
             title: const Text('app_oper Demo'),
           ),
-          //body: const Central(), //ir a la pagina de inicio
-          body: const UserListPage(), //ir a la pagina de inicio
+          body: const Central(), //ir a la pagina de inicio
+          //body: const UserListPage(), //ir a la pagina de inicio
         ));
   }
 }
