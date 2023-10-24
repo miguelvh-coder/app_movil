@@ -6,7 +6,10 @@ class User {
       required this.email,
       required this.colegio,
       required this.grado,
-      required this.fN});
+      required this.fN,
+      required this.password,
+      required this.difficult
+      });
 
   int? id;
   String firstName;
@@ -15,6 +18,8 @@ class User {
   String colegio;
   String fN;
   String grado;
+  String difficult;
+  String password;
 
   String get name => '$firstName $lastName';
 
@@ -28,6 +33,8 @@ class User {
         colegio: json["colegio"] ?? "somecolegio",
         fN: json["Fecha de Nacimiento"] ?? "00/00/0000",
         grado: json["grado de escolaridad"] ?? "0",
+        difficult: json["Dificultad"] ?? "difa",
+        password: json["contraseña"] ?? "somecontraseña",
       );
 
   Map<String, dynamic> toJson() => {
@@ -38,5 +45,7 @@ class User {
         "colegio": colegio,
         "fN": fN,
         "grado": grado,
+        "difficult": difficult,
+        "password": password,
       };
 }

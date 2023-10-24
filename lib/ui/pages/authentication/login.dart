@@ -35,7 +35,7 @@ class _LoginPageState extends State<LoginPage> {
           snackPosition: SnackPosition.BOTTOM,
         );
       } else {
-        diffController.set_dificultad(perController.difficulta.value,perController.difficultb.value);
+        diffController.set_dificultad(perController.difficult.value);
       }
     } catch (err) {
       Get.snackbar(

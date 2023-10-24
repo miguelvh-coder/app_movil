@@ -14,9 +14,10 @@ class dificultad extends GetxController {
   diffb_plus() => _difficultyb.value++;
   diffb_minus() => _difficultyb.value--;
 
-  set_dificultad(int a, int b){
-    _difficultya.value = a;
-    _difficultyb.value = b;
+  set_dificultad(int a){
+    if(a==2){_difficultyb.value=1;_difficultya.value=1;
+    }else if(a==3){_difficultyb.value=2;_difficultya.value=1;
+    }else if(a==4){_difficultyb.value=2;_difficultya.value=2;}
   }
 }
 

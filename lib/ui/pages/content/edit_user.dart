@@ -19,6 +19,8 @@ class _EditUserPageState extends State<EditUserPage> {
   final controllerColegio = TextEditingController();
   final controllerFn = TextEditingController();
   final controllerGrado = TextEditingController();
+  final controllerDifficult = TextEditingController();
+  final controllerPassword = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +31,8 @@ class _EditUserPageState extends State<EditUserPage> {
     controllerColegio.text = user.colegio;
     controllerFn.text = user.fN;
     controllerGrado.text = user.grado;
+    controllerDifficult.text = user.difficult;
+    controllerPassword.text = user.password;
     return Scaffold(
       appBar: AppBar(
         title: Text("${user.firstName} ${user.lastName}"),
@@ -83,6 +87,24 @@ class _EditUserPageState extends State<EditUserPage> {
             const SizedBox(
               height: 20,
             ),
+             TextField(
+                controller: controllerDifficult,
+                keyboardType: TextInputType.text,
+                decoration: const InputDecoration(
+                  labelText: 'dificultad',
+                )),
+            const SizedBox(
+              height: 20,
+            ),
+            TextField(
+                controller: controllerPassword,
+                keyboardType: TextInputType.text,
+                decoration: const InputDecoration(
+                  labelText: 'contraseña',
+                )),
+            const SizedBox(
+              height: 20,
+            ),
             TextField(
                 controller: controllerGrado,
                 keyboardType: TextInputType.number,
@@ -108,7 +130,11 @@ class _EditUserPageState extends State<EditUserPage> {
                                 lastName: controllerLastName.text,
                                 colegio: controllerColegio.text,
                                 fN: controllerFn.text,
-                                grado: controllerGrado.text));
+                                difficult: controllerDifficult.text,
+                                password: controllerPassword.text,
+                                grado: controllerGrado.text,
+
+                                ));
                             Get.back();
                           },
                           child: const Text("Update")))
