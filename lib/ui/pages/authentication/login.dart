@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loggy/loggy.dart';
 import '../../controllers/authentication_controller.dart';
+import '../../controllers/person_controller.dart';
+import '../../controllers/dificultad.dart';
 import 'signup.dart';
 
 class LoginPage extends StatefulWidget {
@@ -15,12 +17,26 @@ class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
   final controllerEmail = TextEditingController(text: 'a@a.com');
   final controllerPassword = TextEditingController(text: '123456');
+  dificultad diffController = Get.find();
   AuthenticationController authenticationController = Get.find();
+  PersonController perController = Get.find();
+
 
   _login(theEmail, thePassword) async {
     logInfo('_login $theEmail $thePassword');
     try {
       await authenticationController.login(theEmail, thePassword);
+      bool ver = authenticationController.isLogged;
+      if (!ver) {
+        Get.snackbar(
+          "Correo o contraseña",
+          "Invalida",
+          icon: const Icon(Icons.person, color: Colors.blue),
+          snackPosition: SnackPosition.BOTTOM,
+        );
+      } else {
+        diffController.set_dificultad(perController.difficulta.value,perController.difficultb.value);
+      }
     } catch (err) {
       Get.snackbar(
         "Login",

@@ -2,7 +2,8 @@ import 'package:get/get.dart';
 
 class PersonController extends GetxController {
   RxInt id = 0.obs;
-  RxInt difficult = 1.obs;
+  RxInt difficulta = 1.obs;
+  RxInt difficultb = 1.obs;
   RxString email = "".obs;
   RxString firstName = "".obs;
   RxString lastName = "".obs;
@@ -13,7 +14,8 @@ class PersonController extends GetxController {
 
   setValues(Map<String, dynamic> data) {
     int id = data['id'];
-    String diff = data['diff'].toString();
+    String diffa = data['diffa'].toString();
+    String diffb = data['diffb'].toString();
     String email = data['email'].toString();
     String course = data['course'].toString();
     String birthday = data['birthday'].toString();
@@ -22,7 +24,8 @@ class PersonController extends GetxController {
     String firstname = data['firstname'].toString();
     String school = data['school'].toString();
     this.id.value = id;
-    difficult.value = int.parse(diff);
+    difficulta.value = int.parse(diffa);
+    difficultb.value = int.parse(diffb);
     this.email.value = email;
     this.course.value = course;
     this.birthday.value = birthday;
@@ -32,7 +35,8 @@ class PersonController extends GetxController {
     this.school.value = school;
   }
 
-  updateDifficult(int diff) {
-    difficult.value = diff;
+  updateDifficult(int a, int b) {
+    difficulta.value = a;
+    difficulta.value = b;
   }
 }

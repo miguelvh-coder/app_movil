@@ -10,11 +10,14 @@ class dificultad extends GetxController {
 
   diffa_plus() => _difficultya.value++;
   diffa_minus() => _difficultya.value--;
-  diffa_reset() => _difficultya.value = 1;
 
   diffb_plus() => _difficultyb.value++;
   diffb_minus() => _difficultyb.value--;
-  diffb_reset() => _difficultyb.value = 1;
+
+  set_dificultad(int a, int b){
+    _difficultya.value = a;
+    _difficultyb.value = b;
+  }
 }
 
 //LISTO
