@@ -3,6 +3,8 @@ import 'package:app_oper/ui/controllers/authentication_controller.dart';
 import 'package:app_oper/ui/controllers/dificultad.dart';
 import 'package:app_oper/ui/controllers/result_writer.dart';
 import 'package:app_oper/ui/controllers/user_controller.dart';
+import 'package:app_oper/ui/controllers/person_controller.dart';
+import 'package:app_oper/ui/controllers/history_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:app_oper/ui/central.dart';
@@ -44,6 +46,8 @@ void main() async{
   Get.put(UserUseCase());
   Get.put(AuthenticationController());
   Get.put(UserController());
+  Get.put(HistoryController());
+  Get.put(PersonController());
   runApp(const MyApp());
 }
 

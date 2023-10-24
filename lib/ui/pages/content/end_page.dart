@@ -42,12 +42,14 @@ String minutos(int segu) {
 
 void newDiff(int cans, int se) {
   dificultad difficulty = Get.find();
+  PersonController per = Get.find();
     if (cans >= 4  && se < 120) {
       if(difficulty.difficultya.value == 1){
         difficulty.diffa_plus();
-      }else if(difficulty.difficultyb == 1){
+      }else if(difficulty.difficultyb.value == 1){
         difficulty.diffb_plus();
       }
+      per.updateDifficult(difficulty.difficultyb.value + difficulty.difficultya.value);
     }
   }
 
